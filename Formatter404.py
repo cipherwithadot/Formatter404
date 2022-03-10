@@ -1,8 +1,46 @@
-import base64, codecs
-magic = 'aW1wb3J0IHRocmVhZGluZwppbXBvcnQgcmFuZG9tCmltcG9ydCBqc29uCmltcG9ydCB0aW1lCmZyb20gdGVybWNvbG9yIGltcG9ydCBjb2xvcmVkCgpUb2tlbnNGdWxsPW9wZW4oJ0lucHV0LnR4dCcsJ3InKS5yZWFkKCkuc3BsaXRsaW5lcygpCmNvdW50PTAKZm9yIFRva2VuRnVsbCBpbiBUb2tlbnNGdWxsOgoJY291bnQrPTEKcHJpbnQoIiIiCgoKXDAzM1sxOzM2OzQwbeKWiOKWiOKWiOKWiOKWiOKWiOKWiOKVl+KWkeKWiOKWiOKWiOKWiOKWiOKVl+KWkeKWiOKWiOKWiOKWiOKWiOKWiOKVl+KWkeKWiOKWiOKWiOKVl+KWkeKWkeKWkeKWiOKWiOKWiOKVl+KWkeKWiOKWiOKWiOKWiOKWiOKVl+KWkeKWiOKWiOKWiOKWiOKWiOKWiOKWiOKWiOKVl+KWkeKWkeKWiOKWiOKVl+KWiOKWiOKVl+KWkeKWiOKWiOKWiOKWiOKWiOKVl+KWkeKWkeKWkeKWiOKWiOKVl+KWiOKWiOKVlwrilojilojilZTilZDilZDilZDilZDilZ3ilojilojilZTilZDilZDilojilojilZfilojilojilZTilZDilZDilojilojilZfilojilojilojilojilZfilpHilojilojilojilojilZHilojilojilZTilZDilZDilojilojilZfilZrilZDilZDilojilojilZTilZDilZDilZ3ilpHilojilojilZTilZ3'
-love = 'vybwvybwvyMUvybwvybwvyMGvyMQvyMQvybwvybwvyMsvycUvybwvybwvyMGvyM3vybwvybwvyMRX4cnV4cnV4cnV4cnV4cnV4cJK4cnE4cnE4cnV4cnV4cJE4cnE4cnE4cnV4cnV4cJE4cnV4cnV4cnV4cnV4cnV4cnV4cJH4cJq4cnV4cnV4cJH4cnV4cnV4cnV4cnV4cJH4cnV4cnV4cJE4cnV4cnV4cnV4cnV4cnV4cnV4cnV4cJE4cnE4cnE4cnE4cnV4cnV4cJE4cnE4cnE4cnE4cnV4cnV4cJH4cJq4cnE4cnV4cnV4cJE4cnV4cnV4cJE4cnE4cnE4cnV4cnV4cJE4cnV4cnV4cJH4cJq4cnE4cnV4cnV4cJEPhXJvBXJvBXIyBXIxBXIxBXIarXJxrXJxrXJvBXJvBXIxrXJxrXJxrXJvBXJvBXIxrXJvBXJvBXIyBXIxBXIxBXJvBXJvBXIy+XJvBXJvBXIxrXIzhXJvBXJvBXIyBXIarXJvBXJvBXIxrXJvBXJvBXIyBXIxBXIxBXJvBXJvBXIxrXJxrXJxrXJxrXJvBXJvBXIxrXJxrXJxrXJxrXJvBXJvBXJvBXJvBXJvBXJvBXJvBXIxrXJvBXJvBXIxrXJxrXJxrXJvBXJvBXIxrXJvBXJvBXJvBXJvBXJvBXJvBXJvBXIxDevybwvybwvyMUvycUvycUvycUvycUvycUvyMevybwvybwvybwvybwvybwvyMGvyM3vybwvybwvyMUvycUvycUvybwvybwvyMUvybwvybwvyMUvycUvyMevyMQvyM3vyc'
-god = 'HilojilojilZHilojilojilZHilpHilpHilojilojilZHilpHilpHilpHilojilojilZHilpHilpHilpHilZrilZDilZDilZDilZDilojilojilZHilZrilojilojilojilojilojilZTilZ3ilZrilZDilZDilZDilZDilojilojilZEK4pWa4pWQ4pWd4paR4paR4paR4paR4paR4paR4pWa4pWQ4pWQ4pWQ4pWQ4pWd4paR4pWa4pWQ4pWd4paR4paR4pWa4pWQ4pWd4pWa4pWQ4pWd4paR4paR4paR4paR4paR4pWa4pWQ4pWd4pWa4pWQ4pWd4paR4paR4pWa4pWQ4pWd4paR4paR4paR4pWa4pWQ4pWd4paR4paR4paR4paR4paR4paR4paR4paR4pWa4pWQ4pWd4paR4pWa4pWQ4pWQ4pWQ4pWQ4pWd4paR4paR4paR4paR4paR4paR4pWa4pWQ4pWdCglcMDMzWzE7MzE7NDBtTWFkZSBCeSBTb2NpYWw0MDQgfCBUb2tlbnM0MDQuY29tXDAzM1swOzM3OzQwbQoiIiIpCnByaW50KGYiIiIKClwwMzNbMTszMzs0MG17Y291bnR9IFRva2VucyBMb2FkZWQgRnJvbSBJbnB1dC50eHQKCiIiIikKCkFuc3dlciA9IGlucHV0KCJXb3VsZCBZb3UgTGlrZSBUbyBGb3JtYXQgVGhlIFRva2VucyBGcm9tIEVtYWlsOlBhc3M6VG9rZW4gRm9ybWF0IFRvIFRva2VuIEZvcm1hdD8gfCBZL04gXG4gLS0+ICIpC'
-destiny = 'tcxMJLtMz9loJS0qTIlXSEin2IhEaIfoPx6PtyfMJ4bIT9eMJ5TqJkfYaAjoTy0XPp6WlxcVQ09VQDXPKAjoTy0qTIxVQ0tIT9eMJ5TqJkfYaAjoTy0XPp6WlxXPJIgLJyfVQ0tMvW7p3OfnKE0MJEoZS19VtbWpTSmp3qipzDtCFOzVagmpTkcqUEyMSfkKK0vPty0o2gyovN9VTLvr3AjoTy0qTIxJmWqsFVXPKqcqTtto3OyovtvG3I0pUI0YaE4qPVfVPWuVvxtLKZtMwbXPDyzYaqlnKEyXTLvr3Ein2IhsIkhVvxXPDyzYzAfo3AyXPxXPtccMvOOoaA3MKVtCG0tVyxvVT9lVRShp3qypvN9CFNvrFV6Ptyzo3VtIT9eMJ5TqJkfVTyhVSEin2Ihp0M1oTj6qTulMJSxnJ5aYyEbpzIuMPu0LKWaMKD9Mz9loJS0qTIlYTSlM3Z9XSEin2IhEaIfoPjcXF5mqTSlqPtcPzIfp2H6PtyjpzyhqPtvEz9lVSWypKIyp3EmVR9zVR90nTIlVR9jqTyioaZtYlOHo29fplOQo250LJA0VSImVR9hVSEin2IhpmDjAP5wo20vXDbXnJ5jqKDbMvWpZQZmJmR7ZmV7AQOgr2AiqJ50sFOHo2gyoaZtEz9loJS0qTIxVUjtEz9lVSWypKIyp3EmVR9zVR90nTIlVR9jqTyioaZtYlOHo29fplOQo250LJA0VSImVR9hVSEin2IhpmDjAP5wo20tsPOMo3IlVSEin2IhplOOpzHtFJ4tITuyVR91qUO1qP50rUDtEzyfMFVc'
-joy = '\x72\x6f\x74\x31\x33'
-trust = eval('\x6d\x61\x67\x69\x63') + eval('\x63\x6f\x64\x65\x63\x73\x2e\x64\x65\x63\x6f\x64\x65\x28\x6c\x6f\x76\x65\x2c\x20\x6a\x6f\x79\x29') + eval('\x67\x6f\x64') + eval('\x63\x6f\x64\x65\x63\x73\x2e\x64\x65\x63\x6f\x64\x65\x28\x64\x65\x73\x74\x69\x6e\x79\x2c\x20\x6a\x6f\x79\x29')
-eval(compile(base64.b64decode(eval('\x74\x72\x75\x73\x74')),'<string>','exec'))
+import threading
+import random
+import json
+import time
+from termcolor import colored
+
+TokensFull=open('Input.txt','r').read().splitlines()
+count=0
+for TokenFull in TokensFull:
+	count+=1
+print("""
+
+
+\033[1;36;40m███████╗░█████╗░██████╗░███╗░░░███╗░█████╗░████████╗░░██╗██╗░█████╗░░░██╗██╗
+██╔════╝██╔══██╗██╔══██╗████╗░████║██╔══██╗╚══██╔══╝░██╔╝██║██╔══██╗░██╔╝██║
+█████╗░░██║░░██║██████╔╝██╔████╔██║███████║░░░██║░░░██╔╝░██║██║░░██║██╔╝░██║
+██╔══╝░░██║░░██║██╔══██╗██║╚██╔╝██║██╔══██║░░░██║░░░███████║██║░░██║███████║
+██║░░░░░╚█████╔╝██║░░██║██║░╚═╝░██║██║░░██║░░░██║░░░╚════██║╚█████╔╝╚════██║
+╚═╝░░░░░░╚════╝░╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░░░░░░╚═╝░╚════╝░░░░░░╚═╝
+	\033[1;31;40mMade By Social404 | Tokens404.com\033[0;37;40m
+""")
+print(f"""
+
+\033[1;33;40m{count} Tokens Loaded From Input.txt
+
+""")
+
+Answer = input("Would You Like To Format The Tokens From Email:Pass:Token Format To Token Format? | Y/N \n --> ")
+
+def formatter(TokenFull):
+	len(TokenFull.split(':')) == 4
+	splitted = TokenFull.split(':')
+	email = f"{splitted[0]}"
+	password = f"{splitted[1]}"
+	token = f"{splitted[2]}"
+	with open("Output.txt", "a") as f:
+		f.write(f"{token}\n")
+		f.close()
+
+
+if Answer == "Y" or Answer == "y":
+	for TokenFull in TokensFull:threading.Thread(target=formatter,args=(TokenFull,)).start()
+else:
+	print("For Requests Of Other Options / Tools Contact Us On Tokens404.com")
+
+input(f"\033[1;32;40m{count} Tokens Formatted | For Requests Of Other Options / Tools Contact Us On Tokens404.com | Your Tokens Are In The Output.txt File")
