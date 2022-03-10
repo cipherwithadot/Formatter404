@@ -17,11 +17,11 @@ print("""
 ██╔══╝░░██║░░██║██╔══██╗██║╚██╔╝██║██╔══██║░░░██║░░░███████║██║░░██║███████║
 ██║░░░░░╚█████╔╝██║░░██║██║░╚═╝░██║██║░░██║░░░██║░░░╚════██║╚█████╔╝╚════██║
 ╚═╝░░░░░░╚════╝░╚═╝░░╚═╝╚═╝░░░░░╚═╝╚═╝░░╚═╝░░░╚═╝░░░░░░░░╚═╝░╚════╝░░░░░░╚═╝
-	\033[1;31;40mMade By Social404 | Tokens404.com\033[0;37;40m
+\033[1;31;40mMade By Social404 | Cracked by Traumatism | Published By Critical\033[0;37;40m
 """)
 print(f"""
 
-\033[1;33;40m{count} Tokens Loaded From Input.txt
+\033[1;33;40m{count} Tokens Loaded From Input.txt :O
 
 """)
 
@@ -41,6 +41,6 @@ def formatter(TokenFull):
 if Answer == "Y" or Answer == "y":
 	for TokenFull in TokensFull:threading.Thread(target=formatter,args=(TokenFull,)).start()
 else:
-	print("For Requests Of Other Options / Tools Contact Us On Tokens404.com")
+	print("For Requests Of Other Options / Tools Contact Us On Tokens404.com but i like to ignore you :)  -Social404")
 
-input(f"\033[1;32;40m{count} Tokens Formatted | For Requests Of Other Options / Tools Contact Us On Tokens404.com | Your Tokens Are In The Output.txt File")
+input(f"\033[1;32;40m{count} Tokens Formatted | For Requests Of Other Options / Tools Contact Us On Tokens404.com but i like to ignore you :)  -Social404 | Your Tokens Are In The Output.txt File")
